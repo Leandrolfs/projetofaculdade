@@ -1,0 +1,40 @@
+﻿@model BuscarMedico.Models.cidades
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<h2>Adicionar nova cidade</h2>
+
+@using (Html.BeginForm("Adicionar", "Cidades", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dados cidade</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+        <br />
+        <p>
+            <input type="submit" class="btn btn-primary" value="Salvar" />
+        </p>
+    </fieldset>
+}
+<!--
+colocar o arrobasection Scripts{
+    <script>
+        $("#menuCidades").addClass("active");
+    </script>
+}
+-->
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>
+

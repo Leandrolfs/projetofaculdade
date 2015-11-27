@@ -1,0 +1,105 @@
+﻿@model BuscarMedico.Models.medicos
+
+@{
+    ViewBag.Title = "Adicionar";
+}
+
+<h2>Adicionar novo Médico</h2>
+
+@using (Html.BeginForm("Adicionar", "Medicos", FormMethod.Post, new { @class = "form-horizontal" })) // CRIA O FORMULARIO NA FORMA HORIZONTAL...
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dados do Médico</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CRM)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.CRM, new { @class = "form-control" }) <!--CLASSE DO BOOTSTRAP PARA ESTILIZAR MELHOR OS CAMPOS -->
+            @Html.ValidationMessageFor(model => model.CRM)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            <label>Endereço</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Endereco, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Endereco)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Bairro)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Bairro, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Bairro)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            <label>Atende por Convênio</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AtendePorConvenio)
+            @Html.ValidationMessageFor(model => model.AtendePorConvenio)
+        </div>
+
+        <div class="editor-label">
+            <label>Tem Clinica</label>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TemClinica)
+            @Html.ValidationMessageFor(model => model.TemClinica)
+        </div>
+
+        <div class="editor-label">
+            <label>Site</label>
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.WebsiteBlog, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.WebsiteBlog)
+        </div>
+
+        <div class="editor-label">
+            <label>Cidade</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("IDCidade", string.Empty) <!--CRIA OS COMBOS-->
+            @Html.ValidationMessageFor(model => model.IDCidade)
+        </div>
+
+        <div class="editor-label">
+            <label>Especialidade</label>
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("IDEspecialidade", string.Empty) <!--CRIA OS COMBOS-->
+            @Html.ValidationMessageFor(model => model.IDEspecialidade)
+        </div>
+        <br />
+        <p>
+            <input type="submit" class="btn btn-primary" value="Salvar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Index")
+</div>

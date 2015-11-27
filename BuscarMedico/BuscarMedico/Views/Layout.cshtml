@@ -1,0 +1,81 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cadê Meu Medico - @ViewBag.Title</title> <!--ViewBag MOSTRA NAS PAGINAS O VALOR PREDEFINIDO..-->
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" /> <!--CHAMANDO O BOOTSTRAP CSS-->
+    <style>
+        body {
+            padding: 60px;
+        }
+
+        #cademeumedico {
+            color: ButtonFace;
+            font-style: oblique;
+            font-size: xx-large;
+        }
+
+        li:hover {
+            background-color: #0094ff;
+        }
+
+        img {
+            margin-top: 20px;
+            margin-bottom: -130px;
+        }
+
+        footer {
+            margin-left: 800px;
+            margin-bottom: 10px;
+        }
+
+        #coracao {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/" id="cademeumedico">
+                    Buscar Médico  <span class="glyphicon glyphicon-search"></span>
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="topo">
+                <ul class="nav navbar-nav">
+                    <li class="navbar"><a href="~/">Página Inicial</a></li>
+                    <li id="menuMedicos">@Html.ActionLink("Médicos", "Index", "Medicos")</li> <!--ADICIONANDO UM NOVO LINK NO TOPO DA PAGINA QUE LEVA AO CADASTRO DE MEDICOS-->
+                    <li id="menuCidade">@Html.ActionLink("Cidades", "Index", "Cidades")</li>
+                    <li id="menuEspecialidade">@Html.ActionLink("Especialidades", "Index", "Especialidade")</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="container">
+        @RenderBody() <!--RENDERIZA OS CODIGOS DAS PAGINAS NESSE LAYOUT PADRÃO-->
+    </div>
+
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>By Buscar Médico <span class="glyphicon glyphicon-heart" id="coracao"></span> &copy; @DateTime.Now.Year - Todos os direitos reservados</p>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="@Url.Content("~/Scripts/jquery-2.1.4.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    @RenderSection("script", required: false) <!--DEFINE SEÇÕES, ONDE DETERMINADO CODIGO SERÁ RENDERIZADO.. SEÇÃO ONDE OS SCRIPTS SERÃO RENDERIZADOS ...-->
+
+</body>
+</html>
